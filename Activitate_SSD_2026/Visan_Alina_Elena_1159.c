@@ -17,7 +17,7 @@ struct Masina initializare(int id, const char* denumire, char marca, int caiPute
 	m.id = id;
 	//m.denumire = (char*)malloc(sizeof(char) * (strlen(denumire) + 1));
 	m.denumire = (char*)malloc(sizeof(char) * (strlen(denumire) + 1));
-	strcpy_s(m.denumire,strlen(denumire)+1, denumire);
+	strcpy_s(m.denumire, strlen(denumire) + 1, denumire);
 	m.marca = marca;
 	m.caiPutere = caiPutere;
 	m.pret = pret;
@@ -32,7 +32,7 @@ void afiseaza(struct Masina m)
 {
 	printf("%d. Masina %s de marca %c are %d cai putere si costa %5.2f euro.\n", m.id, m.denumire, m.marca, m.caiPutere, m.pret);
 }
-void afisareVector(struct Masina* vector, int nrElemente) 
+void afisareVector(struct Masina* vector, int nrElemente)
 {
 	if (vector != NULL && nrElemente > 0) {
 		for (int i = 0; i < nrElemente; i++) {
@@ -44,27 +44,56 @@ struct Masina* copiazaPrimeleNElemente(struct Masina* vector, int nrElemente, in
 {
 	struct Masina* vectorNou = NULL;
 	vectorNou = (struct Masina*)malloc(sizeof(Masina) * nrElementeCopiate);
-	
-		for (int i = 0; i < nrElementeCopiate; i++)
-		{
 
-			vectorNou[i] = vector[i];
-			vectorNou[i].denumire = (char*)malloc(strlen(vector[i].denumire) + 1); //pt ca am char*
-			strcpy_s(vectorNou[i].denumire, strlen(vector[i].denumire) + 1, vector[i].denumire);
-		}
-		return vectorNou;
-	
+	for (int i = 0; i < nrElementeCopiate; i++)
+	{
+
+		vectorNou[i] = vector[i];
+		vectorNou[i].denumire = (char*)malloc(strlen(vector[i].denumire) + 1); //pt ca am char*
+		strcpy_s(vectorNou[i].denumire, strlen(vector[i].denumire) + 1, vector[i].denumire);
+	}
+	return vectorNou;
+
 }
 void dezalocare(struct Masina** vector, int* nrElemente)
 {
 	for (int i = 0; i < (*nrElemente); i++)
 	{
-			free((*vector)[i].denumire);
-		
+		free((*vector)[i].denumire);
+
 	}
 	free(*vector);
 	*vector = NULL;
 	*nrElemente = 0;
+}
+void copiazaMasiniScumpe(struct Masina* vector, char nrElemente, float pretMinim, struct Masina** vectorNou, int* dimensiune)
+{
+	*dimensiune = 0;
+	for (int i = 0; i < nrElemente; i++)
+	{
+		if (vector[i].pret >= pretMinim)
+		{
+			(*dimensiune)++;
+		}
+
+	}
+	if (*vectorNou != NULL)
+	{
+		free(*vectorNou);
+	}
+	*vectorNou = (struct Masina*)malloc(sizeof(struct Masina) * (*dimensiune));
+	int k = 0;
+	for (int i = 0; i < nrElemente; i++)
+	{
+		if (vector[i].pret >= pretMinim)
+		{
+			(*vectorNou)[k] = vector[i];
+			(*vectorNou)[k].denumire = (char*)malloc(strlen(vector[i].denumire) + 1);
+			strcpy_s((*vectorNou)[k].denumire, strlen(vector[i].denumire) + 1, vector[i].denumire);
+			k++;
+		}
+
+	}
 }
 
 
@@ -74,16 +103,16 @@ int main()
 	afiseaza(masina);
 
 	int nrMasini = 3;
-	struct Masina* vector = (struct Masina*)malloc(sizeof(struct Masina) * nrMasini);
-	vector[0] = initializare(2, "BMW", 'B', 200, 200000);
-	vector[1] = initializare(3, "Golf", 'W', 50, 1000);
-	vector[2] = initializare(4, "Octavia", 'S', 100, 2100);
+	struct Masina* masini = (struct Masina*)malloc(sizeof(struct Masina) * nrMasini);
+	masini[0] = initializare(2, "BMW", 'B', 200, 200000);
+	masini[1] = initializare(3, "Golf", 'W', 50, 1000);
+	masini[2] = initializare(4, "Octavia", 'S', 100, 2100);
 	
-	afisareVector(vector, nrMasini);
+	afisareVector(masini, nrMasini);
 
 	struct Masina* primeleMasini = NULL;
 	int nrPrimeleMasini = 2;
-	primeleMasini = copiazaPrimeleNElemente(vector, nrMasini, nrPrimeleMasini);
+	primeleMasini = copiazaPrimeleNElemente(masini, nrMasini, nrPrimeleMasini);
 	printf("\n");
 	printf("\nPrimele masini:\n");
 	afisareVector(primeleMasini, nrPrimeleMasini);
@@ -91,6 +120,14 @@ int main()
 	dezalocare(&primeleMasini,& nrPrimeleMasini);
 	afisareVector(primeleMasini, nrPrimeleMasini);
 	
+	struct Masina* masiniScumpe = NULL;
+	int nrMasiniScumpe = 0;
+	copiazaMasiniScumpe(masini, nrMasini, 3000, &masiniScumpe, &nrMasiniScumpe);
+	printf("\n");
+	printf("\n Masinile scumpe sunt: \n");
+	afisareVector(masiniScumpe, nrMasiniScumpe);
+
+	dezalocare(&masiniScumpe, &nrMasiniScumpe;
 
 	return 0;
 }
