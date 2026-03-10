@@ -30,14 +30,67 @@ struct Masina copiaza(struct Masina m)
 }
 void afiseaza(struct Masina m)
 {
-	printf("%d. Masina %s de marca %c are %d cai putere si costa %5.2f.\n", m.id, m.denumire, m.marca, m.caiPutere, m.pret);
+	printf("%d. Masina %s de marca %c are %d cai putere si costa %5.2f euro.\n", m.id, m.denumire, m.marca, m.caiPutere, m.pret);
+}
+void afisareVector(struct Masina* vector, int nrElemente) 
+{
+	if (vector != NULL && nrElemente > 0) {
+		for (int i = 0; i < nrElemente; i++) {
+			afiseaza(vector[i]);
+		}
+	}
+}
+struct Masina* copiazaPrimeleNElemente(struct Masina* vector, int nrElemente, int nrElementeCopiate)
+{
+	struct Masina* vectorNou = NULL;
+	vectorNou = (struct Masina*)malloc(sizeof(Masina) * nrElementeCopiate);
+	
+		for (int i = 0; i < nrElementeCopiate; i++)
+		{
+
+			vectorNou[i] = vector[i];
+			vectorNou[i].denumire = (char*)malloc(strlen(vector[i].denumire) + 1); //pt ca am char*
+			strcpy_s(vectorNou[i].denumire, strlen(vector[i].denumire) + 1, vector[i].denumire);
+		}
+		return vectorNou;
+	
+}
+void dezalocare(struct Masina** vector, int* nrElemente)
+{
+	for (int i = 0; i < (*nrElemente); i++)
+	{
+			free((*vector)[i].denumire);
+		
+	}
+	free(*vector);
+	*vector = NULL;
+	*nrElemente = 0;
 }
 
 
 int main()
 {
-	struct Masina masina = initializare(1, "Sandero", 'A', 100, 16000);
+	struct Masina masina = initializare(1, "Sandero", 'D', 100, 16000);
 	afiseaza(masina);
+
+	int nrMasini = 3;
+	struct Masina* vector = (struct Masina*)malloc(sizeof(struct Masina) * nrMasini);
+	vector[0] = initializare(2, "BMW", 'B', 200, 200000);
+	vector[1] = initializare(3, "Golf", 'W', 50, 1000);
+	vector[2] = initializare(4, "Octavia", 'S', 100, 2100);
+	
+	afisareVector(vector, nrMasini);
+
+	struct Masina* primeleMasini = NULL;
+	int nrPrimeleMasini = 2;
+	primeleMasini = copiazaPrimeleNElemente(vector, nrMasini, nrPrimeleMasini);
+	printf("\n");
+	printf("\nPrimele masini:\n");
+	afisareVector(primeleMasini, nrPrimeleMasini);
+
+	dezalocare(&primeleMasini,& nrPrimeleMasini);
+	afisareVector(primeleMasini, nrPrimeleMasini);
+	
 
 	return 0;
 }
