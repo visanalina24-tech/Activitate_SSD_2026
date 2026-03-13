@@ -123,7 +123,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Visan_Alina_Elena_1159.c" />
+    <ClCompile Include="LucruCuFisiere.c" />
+    <ClCompile Include="Vectori.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Masini.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
