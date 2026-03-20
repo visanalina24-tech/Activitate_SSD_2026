@@ -123,6 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ListaDubla.c" />
+    <ClCompile Include="ListaSimpla.c" />
     <ClCompile Include="LucruCuFisiere.c" />
     <ClCompile Include="Vectori.c" />
   </ItemGroup>
