@@ -27,7 +27,7 @@
     <ClCompile Include="ListaDubla.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Hashtable.cpp">
+    <ClCompile Include="Hashtable.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
