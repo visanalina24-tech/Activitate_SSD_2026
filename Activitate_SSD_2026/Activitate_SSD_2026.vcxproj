@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hashtable.cpp" />
     <ClCompile Include="ListaDubla.c" />
     <ClCompile Include="ListaSimpla.c" />
     <ClCompile Include="LucruCuFisiere.c" />

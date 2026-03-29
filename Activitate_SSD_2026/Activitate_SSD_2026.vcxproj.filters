@@ -27,6 +27,9 @@
     <ClCompile Include="ListaDubla.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hashtable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />
