@@ -130,6 +130,7 @@
     <ClCompile Include="Vectori.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Carti.txt" />
     <Text Include="Masini.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

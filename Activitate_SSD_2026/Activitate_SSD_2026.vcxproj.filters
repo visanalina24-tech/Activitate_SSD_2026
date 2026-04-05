@@ -33,5 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />
+    <Text Include="Carti.txt" />
   </ItemGroup>
 </Project>
