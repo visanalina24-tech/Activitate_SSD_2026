@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Hashtable.c" />
+    <ClCompile Include="Heap.c" />
     <ClCompile Include="ListaDubla.c" />
     <ClCompile Include="ListaSimpla.c" />
     <ClCompile Include="LucruCuFisiere.c" />
