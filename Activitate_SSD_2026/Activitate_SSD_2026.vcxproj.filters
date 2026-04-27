@@ -36,6 +36,9 @@
     <ClCompile Include="HashTableRecapitulare.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Farmacie.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />

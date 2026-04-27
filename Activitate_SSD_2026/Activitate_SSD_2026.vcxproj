@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Farmacie.c" />
     <ClCompile Include="Hashtable.c" />
     <ClCompile Include="HashTableRecapitulare.c" />
     <ClCompile Include="Heap.c" />
