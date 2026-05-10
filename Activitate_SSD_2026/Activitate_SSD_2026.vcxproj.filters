@@ -39,6 +39,9 @@
     <ClCompile Include="Farmacie.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArboreABC.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />
