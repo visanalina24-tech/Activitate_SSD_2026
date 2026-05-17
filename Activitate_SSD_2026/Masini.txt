@@ -1,4 +1,2 @@
-1,50000,Sandero,D
-2,10000,BMW,B
-3,2200,Logan,D
-4,1000,Mercedes,M
+1,2, 2000,Dacia, Sandero,S
+2,4, 5000,Renault, Clio, C

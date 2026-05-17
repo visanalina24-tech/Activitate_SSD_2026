@@ -124,7 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArboreABC.c" />
-    <ClCompile Include="ArboreFisier.cpp" />
+    <ClCompile Include="ArboreFisier.c" />
     <ClCompile Include="Farmacie.c" />
     <ClCompile Include="Hashtable.c" />
     <ClCompile Include="HashTableRecapitulare.c" />
@@ -132,11 +132,13 @@
     <ClCompile Include="ListaDubla.c" />
     <ClCompile Include="ListaSimpla.c" />
     <ClCompile Include="LucruCuFisiere.c" />
+    <ClCompile Include="RecapitulareTestArbori.c" />
     <ClCompile Include="Vectori.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Carti.txt" />
     <Text Include="Masini.txt" />
+    <Text Include="masiniArbore.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

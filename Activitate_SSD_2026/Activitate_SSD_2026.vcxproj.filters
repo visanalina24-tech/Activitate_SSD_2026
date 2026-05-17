@@ -42,12 +42,18 @@
     <ClCompile Include="ArboreABC.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArboreFisier.cpp">
+    <ClCompile Include="ArboreFisier.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RecapitulareTestArbori.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />
     <Text Include="Carti.txt" />
+    <Text Include="masiniArbore.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
