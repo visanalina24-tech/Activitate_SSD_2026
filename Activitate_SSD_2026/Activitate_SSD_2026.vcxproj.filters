@@ -42,6 +42,9 @@
     <ClCompile Include="ArboreABC.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArboreFisier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Masini.txt" />
