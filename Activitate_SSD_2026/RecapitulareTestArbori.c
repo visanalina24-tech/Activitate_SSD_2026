@@ -16,7 +16,7 @@ struct Masina {
 };
 struct Nod {
 	Masina masina;
-    Nod* next;
+	Nod* next;
 	Nod* prev;
 };
 void afisareMasina(Masina masina) {
@@ -34,7 +34,7 @@ Masina citireMasinaDinFisier(FILE* file) {
 	char* aux;
 	aux = strtok(buffer, sep);
 	Masina m;
-	m.id = atoi(strtok(NULL, sep));
+	m.id = atoi(aux);
 	m.nrUsi = atoi(strtok(NULL, sep));
 	m.pret = atof(strtok(NULL, sep));
 	aux = strtok(NULL, sep);
@@ -42,7 +42,7 @@ Masina citireMasinaDinFisier(FILE* file) {
 	strcpy_s(m.model, strlen(aux) + 1, aux);
 	aux = strtok(NULL, sep);
 	m.marca = malloc(strlen(aux) + 1);
-	strpcy_s(m.marca, strlen(aux) + 1, aux);
+	strcpy_s(m.marca, strlen(aux) + 1, aux);
 	m.serie = *strtok(NULL, sep);
 	return m;
 }
@@ -61,8 +61,8 @@ void adaugaMasinaInArbore(Nod** arbore, Masina masinaNoua) {
 		adaugaMasinaInArbore(&(*arbore)->next, masinaNoua);
 	}
 }
-Nod* citireArboreDeMasiniDinFisier(const char* numeFisier){
-	FILE* f = feopen(numeFisier, "r");
+Nod* citireArboreDeMasiniDinFisier(const char* numeFisier) {
+	FILE* f = fopen(numeFisier, "r");
 	Nod* arbore = NULL;
 	while (!feof(f)) {
 		adaugaMasinaInArbore(&arbore, citireMasinaDinFisier(f));
@@ -70,7 +70,33 @@ Nod* citireArboreDeMasiniDinFisier(const char* numeFisier){
 	fclose(f);
 	return arbore;
 }
+void afisareMasiniDinArbore(Nod* arbore) {
+	if (arbore) {
+		afisareMasina(arbore->masina);
+		afisareMasiniDinArbore(arbore->prev);
+		afisareMasiniDinArbore(arbore->next);
+	}
+}
+
+void dezalocareDeArboreDeMasini(Nod** arbore) {
+	if (*arbore) {
+		dezalocareDeArboreDeMasini(&(*arbore)->prev);
+		dezalocareDeArboreDeMasini(&(*arbore)->next);
+		free((*arbore) -> prev);
+		free((*arbore)->next);
+		free(*arbore);
+		*arbore = NULL;
+	}
+}
+
+int main (){
+
+	Nod* arbore = citireArboreDeMasiniDinFisier("masiniArbore.txt");
+	afisareMasiniDinArbore(arbore);
 	
+	Masina m = (Masina){ 100,2,70000,"A6","Audi",'A'};
+	adaugaMasinaInArbore(&arbore, m);
+	afisareMasiniDinArbore(arbore);
+	dezalocareDeArboreDeMasini(&arbore);
 
-
-
+}
